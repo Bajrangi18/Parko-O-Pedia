@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 #menuNav {
 /* overflow: hidden; */
 position: fixed;
@@ -6,8 +8,27 @@ right: -1.5vw;
 width: 100%;
 }
 
+#phoneNo {
+  width: 70%;
+  /* transition: borderColor */
+}
 
+#headerSpace {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10vw;
+  font-weight: 400;
+}
 
-#qrPress {
+#listSpaces {
+  width: 80%;
+}
 
+#freeSlot {
+  display: none;
+  font-size: 50vw;
+}
+#farePrice {
+  width:75%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2.5vw;
 }
