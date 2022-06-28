@@ -100,7 +100,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
            const valuePlot = Object.values(sp);
            // console.log("plot"+valuePlot(0));
             for(var i=0;i<valuePlot.length;i++){
-             if(valuePlot[i]==0){
+             if(valuePlot[i]==1){
                 console.log("plot"+(i+1));
                 const toastLiveExample = document.getElementById('liveToast')
                 document.getElementById('toastBod').innerHTML = "PLOT "+(i+1)+ " Alloted";
