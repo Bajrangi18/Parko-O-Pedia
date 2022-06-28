@@ -108,6 +108,11 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 toast.show()
                 break;
              }
+          }if(i==valuePlot.length) {
+                const toastLiveExample = document.getElementById('liveToast')
+                document.getElementById('toastBod').innerHTML = "No Slots Available";
+                const toast = new bootstrap.Toast(toastLiveExample)
+                toast.show()
           }
 
          } else {
