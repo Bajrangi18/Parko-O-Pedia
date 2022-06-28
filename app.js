@@ -138,9 +138,13 @@ function func_avail () {
                     // var plotsAvailable = snapshot.val();
                     console.log(snapshot.val());
                     const keysPlot = Object.keys(snapshot.val());
-                    const freePlot = d3.sum(Object.values(snapshot.val()));
+                    const freePlot = Object.values(snapshot.val());
+                    let mySum = 0;
+                    for(var j=0;j<freePlot.length;j++){
+                      mySum = mySum + freePlot[j];
+                    }
                     document.getElementById('freeSlot').style.display = "contents";
-                    document.getElementById('freeSlot').innerHTML = freePlot;
+                    document.getElementById('freeSlot').innerHTML = mySum;
 
                   } else {
                     console.log("No data available");
@@ -148,60 +152,44 @@ function func_avail () {
                     console.error(error);});
               }
      else if (this.value=="B") {
-                     const dbRef = ref(getDatabase());
-                     get(child(dbRef, '/Parking '+this.value+'/')).then((snapshot) => {
-                       if (snapshot.exists()) {
-                         // var plotsAvailable = snapshot.val();
-                         console.log(snapshot.val());
-                         const keysPlot = Object.keys(snapshot.val());
-                         const freePlot = d3.sum(Object.values(snapshot.val()));
-                         document.getElementById('freeSlot').style.display = "contents";
-                         document.getElementById('freeSlot').innerHTML = freePlot;
+                   const dbRef = ref(getDatabase());
+                   get(child(dbRef, '/Parking '+this.value+'/')).then((snapshot) => {
+                     if (snapshot.exists()) {
+                       // var plotsAvailable = snapshot.val();
+                       console.log(snapshot.val());
+                       const keysPlot = Object.keys(snapshot.val());
+                       const freePlot = Object.values(snapshot.val());
+                       let mySum = 0;
+                       for(var j=0;j<freePlot.length;j++){
+                         mySum = mySum + freePlot[j];
+                       }
+                       document.getElementById('freeSlot').style.display = "contents";
+                       document.getElementById('freeSlot').innerHTML = mySum;
 
-                       } else {
-                         console.log("No data available");
-                         }}).catch((error) => {
-                         console.error(error);});
-     }else{    console.log(this.value)
-                     const dbRef = ref(getDatabase());
-                     get(child(dbRef, '/Parking '+this.value+'/')).then((snapshot) => {
-                       if (snapshot.exists()) {
-                         // var plotsAvailable = snapshot.val();
-                         console.log(snapshot.val());
-                         const keysPlot = Object.keys(snapshot.val());
-                         const freePlot = d3.sum(Object.values(snapshot.val()));
-                         document.getElementById('freeSlot').style.display = "contents";
-                         document.getElementById('freeSlot').innerHTML = freePlot;
+                     } else {
+                       console.log("No data available");
+                       }}).catch((error) => {
+                       console.error(error);});
+               }else{    const dbRef = ref(getDatabase());
+                 get(child(dbRef, '/Parking '+this.value+'/')).then((snapshot) => {
+                   if (snapshot.exists()) {
+                     // var plotsAvailable = snapshot.val();
+                     console.log(snapshot.val());
+                     const keysPlot = Object.keys(snapshot.val());
+                     const freePlot = Object.values(snapshot.val());
+                     let mySum = 0;
+                     for(var j=0;j<freePlot.length;j++){
+                       mySum = mySum + freePlot[j];
+                     }
+                     document.getElementById('freeSlot').style.display = "contents";
+                     document.getElementById('freeSlot').innerHTML = mySum;
 
-                       } else {
-                         console.log("No data available");
-                         }}).catch((error) => {
-                         console.error(error);});
-                }
+                   } else {
+                     console.log("No data available");
+                     }}).catch((error) => {
+                     console.error(error);});
+                 }
 
 
   });
 }
-
-// function generate_table(n, m) {
-//
-//   var body = document.getElementsByTagName("body")[0];
-//   var tbl = document.createElement("table");
-//   var tblBody = document.createElement("tbody");
-//
-//   for (var i = 0; i < n; i++) {
-//
-//     var row = document.createElement("tr");
-//     for (var j = 0; j < m; j++) {
-//       var cell = document.createElement("td");
-//       var cellText = document.createTextNode(i+","+j);
-//       cell.appendChild(cellText);
-//       row.appendChild(cell);
-//     }
-//     tblBody.appendChild(row);
-//   }
-//
-//   tbl.appendChild(tblBody);
-//   body.appendChild(tbl);
-//   tbl.setAttribute("border", "2");
-// }
