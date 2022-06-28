@@ -16,7 +16,9 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // let plotsAvailable = 0;
-
+ let global_space = "";
+ let global_park = "";
+ let global_status = "";
 
 
 document.getElementById('qrPress').addEventListener("click", function(){
@@ -36,11 +38,16 @@ document.getElementById('qrPress').addEventListener("click", function(){
               document.getElementById('fare').style.display = "contents";
               document.getElementById('login').style.display = "none";
 
-              document.getElementById('logorzp').addEventListener("click", function() {
 
-                  console.log(document.getElementById('priceVal').value);
+              document.getElementById('spacePark').innerHTML = global_space ;
+              document.getElementById('slotPark').innerHTML = global_park;
+              document.getElementById('statusPark').innerHTML = global_status;
 
-              });
+              // document.getElementById('logorzp').addEventListener("click", function() {
+              //
+              //     console.log(document.getElementById('priceVal').value);
+              //
+              // });
 
   });
 
@@ -100,15 +107,20 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
            const valuePlot = Object.values(sp);
            // console.log("plot"+valuePlot(0));
             for(var i=0;i<valuePlot.length;i++){
+
              if(valuePlot[i]==1){
                 console.log("plot"+(i+1));
                 const toastLiveExample = document.getElementById('liveToast')
                 document.getElementById('toastBod').innerHTML = "PLOT "+(i+1)+ " Alloted";
                 const toast = new bootstrap.Toast(toastLiveExample)
                 toast.show()
+                global_space = decodedText;
+                global_park = (i+1).toString();
+                global_status = "Parked"
                 break;
              }
-          }if(i==valuePlot.length) {
+          }
+          if(i==valuePlot.length) {
                 const toastLiveExample = document.getElementById('liveToast')
                 document.getElementById('toastBod').innerHTML = "No Slots Available";
                 const toast = new bootstrap.Toast(toastLiveExample)
